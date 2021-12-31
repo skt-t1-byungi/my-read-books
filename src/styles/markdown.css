@@ -1,0 +1,109 @@
+.markdown {
+    @apply leading-relaxed;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-topokki text-persiangreen;
+    }
+    h1,
+    h2 {
+        @apply border-b border-b-argent border-dashed pb-2 mb-4 mt-10;
+    }
+    h3,
+    h4 {
+        @apply mb-3 mt-6;
+    }
+    h5,
+    h6 {
+        @apply mb-3 mt-4 text-wenge;
+    }
+    h1 {
+        @apply text-3xl;
+    }
+    h2 {
+        @apply text-2xl;
+    }
+    h3 {
+        @apply text-xl;
+    }
+    h4 {
+        @apply text-lg;
+    }
+
+    ul,
+    ol {
+        @apply pl-8 list-outside mb-3;
+        &:is(ul) {
+            @apply list-disc;
+        }
+        &:is(ol) {
+            @apply list-decimal;
+        }
+        ul {
+            @apply list-[circle];
+        }
+        :is(ol, ul) ul {
+            @apply list-[square];
+        }
+        ol {
+            @apply list-[lower-roman];
+        }
+        :is(ol, ul) ol {
+            @apply list-[lower-alpha];
+        }
+    }
+
+    p {
+        @apply mb-3;
+    }
+
+    a[href] {
+        @apply text-lightgold underline;
+    }
+
+    strong {
+        @apply text-deepcarrotorange;
+    }
+
+    hr {
+        @apply border-0 border-b border-b-argent border-dashed mb-3;
+    }
+
+    kbd {
+        @apply bg-[#f6f8fa] border border-[#d5d8da] rounded-lg p-[2px] text-sm mx-1;
+    }
+
+    img {
+        @apply inline-block align-text-bottom;
+    }
+
+    *:not(pre) > code {
+        @apply bg-bone rounded px-1 py-[2px];
+    }
+
+    blockquote {
+        @apply text-wenge pl-4 border-l-4 border-bone mb-3;
+    }
+
+    pre {
+        @apply mb-3 overflow-auto p-4 rounded;
+        code {
+            @apply inline-block;
+        }
+    }
+
+    table {
+        @apply mb-3;
+        th,
+        td {
+            @apply border border-argent px-4 py-2;
+        }
+        tr:nth-child(even) {
+            @apply bg-bone;
+        }
+    }
+}

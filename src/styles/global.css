@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-sans bg-isabelline text-darkslategray;
+    }
+}
+
+@layer components {
+    .scrollbar-water {
+        scrollbar-gutter: stable;
+        &::-webkit-scrollbar {
+            @apply w-1;
+        }
+        &::-webkit-scrollbar-track {
+            @apply rounded-full bg-[#c2e6eb];
+        }
+        &::-webkit-scrollbar-thumb {
+            @apply rounded-full bg-[#53b7c7];
+        }
+    }
+}
