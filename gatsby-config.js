@@ -18,6 +18,7 @@ module.exports = {
                 rehypePlugins: [require('rehype-slug')],
             },
         },
+        'gatsby-plugin-react-helmet',
     ],
     jsxRuntime: 'automatic',
 }

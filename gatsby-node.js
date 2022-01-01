@@ -5,7 +5,7 @@ exports.createPages = async ({ actions, graphql }) => {
     const { data } = await graphql(gql`
         {
             allMdx(
-                filter: { frontmatter: { state: { in: ["ing", "done"] } } }
+                filter: { frontmatter: { content: { in: ["ing", "done"] } } }
             ) {
                 nodes {
                     id

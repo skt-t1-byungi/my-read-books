@@ -7,11 +7,11 @@
     h4,
     h5,
     h6 {
-        @apply font-topokki text-persiangreen;
+        @apply font-brba text-persiangreen;
     }
     h1,
     h2 {
-        @apply border-b border-b-argent border-dashed pb-2 mb-4 mt-10;
+        @apply border-b border-b-argent border-dashed pb-2 mb-4 mt-8;
     }
     h3,
     h4 {
@@ -82,7 +82,7 @@
     }
 
     *:not(pre) > code {
-        @apply bg-bone rounded px-1 py-[2px];
+        @apply bg-bone rounded px-1 py-[2px] font-topokki text-sm;
     }
 
     blockquote {

@@ -5,6 +5,7 @@ module.exports = {
             fontFamily: {
                 topokki: ['SDKukdetopokki-Lt', 'sans-serif'],
                 sans: ['SpoqaHanSansNeo-Regular', 'sans-serif'],
+                brba: ['BRBA_B', 'sans-serif'],
             },
             colors: {
                 water: '#d4f3f8',
@@ -20,6 +21,7 @@ module.exports = {
                 deepcarrotorange: '#e07224',
                 cottoncandy: '#fec0da',
                 englishred: '#a13f4d',
+                mulberry: '#b85a89',
             },
         },
     },

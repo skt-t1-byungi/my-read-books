@@ -1,5 +1,6 @@
 import cx from 'clsx'
 import { RefObject, useEffect, useRef, useState } from 'react'
+import { debounceTime, filter, fromEvent, map } from 'rxjs'
 
 interface TocItem {
     url: string
@@ -16,11 +17,12 @@ export default function TocNav({
     items: TocItem[]
     contentRef?: RefObject<HTMLElement>
 }) {
+    const target = contentRef?.current ?? document.body
     const elRef = useRef<HTMLDivElement>(null)
-    const [currUrl, setCurrUrl] = useState(items[0].url)
+    const [currUrl, setCurrUrl] = useState(items[0]?.url)
 
     useEffect(() => {
-        const set = new Set()
+        const set = new Set<Element>()
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -28,23 +30,36 @@ export default function TocNav({
                 } else {
                     set.delete(entry.target)
                 }
-                const el = set.values().next().value
-                if (el) {
-                    const url = `#${el.id}`
-                    setCurrUrl(url)
-                    elRef.current
-                        ?.querySelector(`a[href="${url}"]`)
-                        ?.scrollIntoView({ block: 'nearest' })
-                }
             })
         })
-        ;(contentRef?.current ?? document.body)
-            .querySelectorAll('[id]')
-            .forEach(el => observer.observe(el))
+        target.querySelectorAll('[id]').forEach(el => observer.observe(el))
+
+        const subs = fromEvent(window, 'scroll')
+            .pipe(
+                debounceTime(150),
+                filter(() => set.size > 0),
+                map(
+                    () =>
+                        [...set.values()].sort(
+                            (a, b) =>
+                                a.getBoundingClientRect().top -
+                                b.getBoundingClientRect().top
+                        )[0]
+                )
+            )
+            .subscribe(el => {
+                const url = `#${el.id}`
+                setCurrUrl(url)
+                elRef.current
+                    ?.querySelector(`a[href="${url}"]`)
+                    ?.scrollIntoView({ block: 'nearest' })
+            })
+
         return () => {
             observer.disconnect()
+            subs.unsubscribe()
         }
-    }, [])
+    }, [target])
 
     return (
         <nav
