@@ -3,8 +3,8 @@
     "scripts": {
         "start": "gatsby develop -p 4010",
         "clean": "gatsby clean",
-        "build": "gatsby build",
-        "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+        "build": "gatsby build --prefix-paths",
+        "deploy": "pnpm build && gh-pages -d public",
         "new": "node scripts/aladin.js"
     },
     "prettier": {
