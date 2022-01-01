@@ -69,12 +69,15 @@ export default function Index({ data }: { data: GatsbyTypes.IndexQuery }) {
                                         </span>
                                     )}
                                 </div>
-                                <p className="mb-2 font-topokki [word-break:keep-all]">
+                                <p className="mb-2 font-topokki keep-all">
                                     {o.frontmatter!.title}
                                 </p>
-                                <p className="text-[#787673] text-xs [word-break:keep-all]">
-                                    {o.frontmatter!.description}
-                                </p>
+                                <p
+                                    className="text-[#787673] text-xs keep-all"
+                                    dangerouslySetInnerHTML={{
+                                        __html: o.frontmatter!.description!,
+                                    }}
+                                ></p>
                             </>
                         )
                         if (hasContent) {

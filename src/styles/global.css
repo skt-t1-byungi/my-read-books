@@ -22,3 +22,9 @@
         }
     }
 }
+
+@layer utilities {
+    .keep-all {
+        word-break: keep-all;
+    }
+}
