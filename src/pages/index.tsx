@@ -38,8 +38,8 @@ export default function Index({ data }: { data: GatsbyTypes.IndexQuery }) {
                     책 좀 욘데구다사이!
                 </p>
             </header>
-            <main className="max-w-[720px] mx-auto pt-14 pb-20">
-                <ul className="grid grid-cols-4 gap-x-6 gap-y-8">
+            <main className="max-w-[740px] mx-auto pt-14 pb-20">
+                <ul className="grid grid-cols-4 gap-x-2 gap-y-8">
                     {data.allMdx.nodes.map((o, i) => {
                         const hasContent = ['ing', 'done'].includes(
                             o.frontmatter!.content!
@@ -48,7 +48,7 @@ export default function Index({ data }: { data: GatsbyTypes.IndexQuery }) {
                             <>
                                 <div
                                     className={cx(
-                                        'w-full aspect-[210/297] bg-center bg-[length:110%] mb-3 border flex gap-1 flex-row items-end justify-end px-2 py-3',
+                                        'w-5/6 aspect-[210/297] bg-center bg-[length:110%] mb-3 border flex gap-1 flex-row items-end justify-end px-2 py-3 mx-auto',
                                         hasContent &&
                                             'group-hover:bg-[length:120%] transition-[background-size] hover:duration-500 shadow-lg'
                                     )}
@@ -72,7 +72,7 @@ export default function Index({ data }: { data: GatsbyTypes.IndexQuery }) {
                                 <p className="mb-2 font-topokki [word-break:keep-all]">
                                     {o.frontmatter!.title}
                                 </p>
-                                <p className="text-[#787673] text-xs">
+                                <p className="text-[#787673] text-xs [word-break:keep-all]">
                                     {o.frontmatter!.description}
                                 </p>
                             </>
