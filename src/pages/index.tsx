@@ -77,10 +77,10 @@ export default function Index({ data }: { data: GatsbyTypes.IndexQuery }) {
                                 </p>
                             </>
                         )
-                        if (o.frontmatter?.slug) {
+                        if (hasContent) {
                             body = (
                                 <Link
-                                    to={`books/${o.frontmatter.slug}`}
+                                    to={`books/${o.frontmatter!.slug!}`}
                                     className={cx(hasContent && 'group')}
                                 >
                                     {body}

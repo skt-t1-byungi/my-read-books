@@ -11,15 +11,15 @@
     }
     h1,
     h2 {
-        @apply border-b border-b-argent border-dashed pb-2 mb-4 mt-8;
+        @apply border-b border-b-argent border-dashed pb-2 mb-4 mt-12;
     }
     h3,
     h4 {
-        @apply mb-3 mt-6;
+        @apply mb-3 mt-8;
     }
     h5,
     h6 {
-        @apply mb-3 mt-4 text-wenge;
+        @apply mb-3 mt-6 text-wenge;
     }
     h1 {
         @apply text-3xl;

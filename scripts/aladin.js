@@ -23,7 +23,8 @@ httpGet(url)
             /<meta property="og:title" content="(.*?)"\s*\/>/
         )?.[1]
 
-        const dir = `${__dirname}/../books/${slugify(title)}`
+        const slug = slugify(title)
+        const dir = `${__dirname}/../books/${slug}`
         fs.mkdirSync(dir, { recursive: true })
         await pipeline(
             await httpGet(coverUrl),
@@ -36,12 +37,12 @@ httpGet(url)
         ).padStart(2, 0)}-${String(now.getDate()).padStart(2, 0)}`
         const md = `
 ---
-title: ${title}
+title: '${title}'
 cover: ./cover.jpg
 date: ${dateStr}
 description: ''
 content: none
-slug: false
+slug: ${slug}
 ---
 `.trim()
         console.log(md)
