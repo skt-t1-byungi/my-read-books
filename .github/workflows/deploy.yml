@@ -15,7 +15,7 @@ jobs:
             - uses: actions/setup-node@v2
               with:
                   cache: 'pnpm'
-            - run: pnpm ci
+            - run: pnpm i
             - run: pnpm build
             - uses: JamesIves/github-pages-deploy-action@4.1.8
               with:
