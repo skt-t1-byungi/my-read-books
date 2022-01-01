@@ -1,6 +1,6 @@
 /** @type {import('gatsby').GatsbyConfig} */
 module.exports = {
-    siteMetadata: {},
+    pathPrefix: '/my-read-books',
     plugins: [
         'gatsby-plugin-pnpm',
         'gatsby-plugin-graphql-config',
