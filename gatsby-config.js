@@ -19,6 +19,17 @@ module.exports = {
             },
         },
         'gatsby-plugin-react-helmet',
+        {
+            resolve: 'gatsby-plugin-manifest',
+            options: {
+                name: `My Read Books`,
+                icon: 'src/assets/icon.png',
+                start_url: `/my-read-books`,
+                background_color: `#f7f4ee`,
+                theme_color: `#00ac8f`,
+                display: `standalone`,
+            },
+        },
     ],
     jsxRuntime: 'automatic',
 }
