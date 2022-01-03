@@ -30,6 +30,7 @@ module.exports = {
                 display: `standalone`,
             },
         },
+        'gatsby-plugin-preload-fonts',
     ],
     jsxRuntime: 'automatic',
 }
