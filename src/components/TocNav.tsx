@@ -11,16 +11,18 @@ interface TocItem {
 export default function TocNav({
     className,
     items,
-    contentRef,
+    contentElement,
 }: {
     className?: string
     items: TocItem[]
-    contentRef?: RefObject<HTMLElement>
+    contentElement?: HTMLElement
 }) {
     const elRef = useRef<HTMLDivElement>(null)
     const [currUrl, setCurrUrl] = useState(items[0]?.url)
 
     useEffect(() => {
+        if (!contentElement) return
+
         const set = new Set<Element>()
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -31,7 +33,7 @@ export default function TocNav({
                 }
             })
         })
-        ;(contentRef?.current ?? globalThis.document.body)
+        contentElement
             ?.querySelectorAll('[id]')
             .forEach(el => observer.observe(el))
 
@@ -60,7 +62,7 @@ export default function TocNav({
             observer.disconnect()
             subs.unsubscribe()
         }
-    }, [])
+    }, [contentElement])
 
     return (
         <nav

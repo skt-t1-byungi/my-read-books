@@ -3,7 +3,7 @@ import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import CodeBlock from '../components/CodeBlock'
 import TocNav from '../components/TocNav'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import QueueAnim from 'rc-queue-anim'
 
 import '../styles/markdown.css'
@@ -24,21 +24,26 @@ export const query = graphql`
 const components = { pre: CodeBlock }
 
 export default function Post({ data }: { data: GatsbyTypes.BookQuery }) {
-    const contentRef = useRef<HTMLElement>(null)
+    const [contentEl, setContentEl] = useState<HTMLElement | null>(null)
     return (
         <>
             <Helmet>
                 <title>{data.mdx!.frontmatter!.title} - 요약</title>
             </Helmet>
             <main className="[--main-w:680px] [--aside-h:64px] w-[var(--main-w)] mx-auto relative">
-                <QueueAnim type="bottom">
+                <QueueAnim
+                    type="bottom"
+                    onEnd={e => {
+                        if (e.key === 'content') setContentEl(e.target)
+                    }}
+                >
                     <div
-                        key={1}
+                        key="toc"
                         className="fixed ml-[calc(var(--main-w)_+_30px)] top-[2.5vh] flex flex-col gap-3"
                     >
                         <TocNav
                             className="h-[calc(85vh_-_var(--aside-h)_-_0.75em_-_5vh)]"
-                            contentRef={contentRef}
+                            contentElement={contentEl ?? undefined}
                             items={
                                 (data.mdx?.tableOfContents as any).items ?? []
                             }
@@ -65,7 +70,7 @@ export default function Post({ data }: { data: GatsbyTypes.BookQuery }) {
                             </button>
                         </aside>
                     </div>
-                    <article key={2} className="markdown" ref={contentRef}>
+                    <article key="content" className="markdown">
                         <MDXProvider components={components}>
                             <MDXRenderer>{data.mdx!.body}</MDXRenderer>
                         </MDXProvider>
