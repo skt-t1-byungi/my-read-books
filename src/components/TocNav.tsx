@@ -17,7 +17,6 @@ export default function TocNav({
     items: TocItem[]
     contentRef?: RefObject<HTMLElement>
 }) {
-    const target = contentRef?.current ?? globalThis.document?.body
     const elRef = useRef<HTMLDivElement>(null)
     const [currUrl, setCurrUrl] = useState(items[0]?.url)
 
@@ -32,7 +31,9 @@ export default function TocNav({
                 }
             })
         })
-        target?.querySelectorAll('[id]').forEach(el => observer.observe(el))
+        ;(contentRef?.current ?? globalThis.document.body)
+            ?.querySelectorAll('[id]')
+            .forEach(el => observer.observe(el))
 
         const subs = fromEvent(window, 'scroll')
             .pipe(
@@ -59,7 +60,7 @@ export default function TocNav({
             observer.disconnect()
             subs.unsubscribe()
         }
-    }, [target])
+    }, [])
 
     return (
         <nav

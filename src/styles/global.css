@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply font-sans bg-isabelline text-darkslategray;
+        @apply font-sans bg-isabelline text-darkslategray overflow-y-scroll;
     }
 }
 
