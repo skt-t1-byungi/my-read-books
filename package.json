@@ -6,7 +6,7 @@
         "build": "gatsby build --prefix-paths",
         "deploy": "pnpm build && gh-pages -d public",
         "new": "node scripts/aladin.js",
-        "preload-fonts": "gatsby-preload-fonts"
+        "preload-fonts": "gatsby-preload-fonts && sed -i -e 's/\\/static/\\/my-read-books\\/static/g' font-preload-cache.json"
     },
     "prettier": {
         "arrowParens": "avoid",
