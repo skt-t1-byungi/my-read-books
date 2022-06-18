@@ -3,7 +3,7 @@ import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import CodeBlock from '../components/CodeBlock'
 import TocNav from '../components/TocNav'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import QueueAnim from 'rc-queue-anim'
 
 import '../styles/markdown.css'

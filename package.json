@@ -44,6 +44,7 @@
     },
     "devDependencies": {
         "@types/mdx-js__react": "^1.5.5",
+        "@types/react": "^17",
         "@types/react-helmet": "^6.1.5",
         "cjk-slug": "^0.3.0",
         "gh-pages": "^3.2.3",
