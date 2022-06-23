@@ -1,5 +1,5 @@
 import cx from 'clsx'
-import { RefObject, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { debounceTime, filter, fromEvent, map } from 'rxjs'
 
 interface TocItem {

@@ -1,10 +1,12 @@
-/** @type {import('gatsby').GatsbyConfig} */
-module.exports = {
+import type { GatsbyConfig } from 'gatsby'
+import * as rehypeSlug from 'rehype-slug'
+
+const config: GatsbyConfig = {
+    graphqlTypegen: true,
+    polyfill: false,
     pathPrefix: '/my-read-books',
     plugins: [
         'gatsby-plugin-pnpm',
-        'gatsby-plugin-graphql-config',
-        'gatsby-plugin-typegen',
         'gatsby-plugin-postcss',
         {
             resolve: 'gatsby-source-filesystem',
@@ -15,7 +17,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-mdx',
             options: {
-                rehypePlugins: [require('rehype-slug')],
+                rehypePlugins: [rehypeSlug],
             },
         },
         'gatsby-plugin-react-helmet',
@@ -34,3 +36,5 @@ module.exports = {
     ],
     jsxRuntime: 'automatic',
 }
+
+export default config

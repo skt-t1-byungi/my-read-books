@@ -23,7 +23,7 @@ export const query = graphql`
 
 const components = { pre: CodeBlock }
 
-export default function Post({ data }: { data: GatsbyTypes.BookQuery }) {
+export default function Post({ data }: { data: Queries.BookQuery }) {
     const [contentEl, setContentEl] = useState<HTMLElement | null>(null)
     return (
         <>

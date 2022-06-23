@@ -1,1 +1,1 @@
-module.exports = require('./.cache/graphql.config.json')
+module.exports = require('./.cache/typegen/graphql.config.json')

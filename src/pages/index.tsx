@@ -24,7 +24,7 @@ export const query = graphql`
     }
 `
 
-export default function Index({ data }: { data: GatsbyTypes.IndexQuery }) {
+export default function Index({ data }: { data: Queries.IndexQuery }) {
     return (
         <>
             <Helmet>
@@ -77,7 +77,7 @@ export default function Index({ data }: { data: GatsbyTypes.IndexQuery }) {
                                     dangerouslySetInnerHTML={{
                                         __html: o.frontmatter!.description!,
                                     }}
-                                ></p>
+                                />
                             </>
                         )
                         if (hasContent) {

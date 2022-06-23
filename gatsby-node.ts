@@ -1,9 +1,12 @@
-const path = require('path')
+import type { GatsbyNode } from 'gatsby'
+import * as path from 'path'
 
-/** @type {import("gatsby").GatsbyNode['createPages']} */
-exports.createPages = async ({ actions, graphql }) => {
-    const { data } = await graphql(gql`
-        {
+export const createPages: GatsbyNode['createPages'] = async ({
+    actions,
+    graphql,
+}) => {
+    const { data } = await graphql<Queries.PageSlugsQuery>(gql`
+        query PageSlugs {
             allMdx(
                 filter: { frontmatter: { content: { in: ["ing", "done"] } } }
             ) {
@@ -16,12 +19,12 @@ exports.createPages = async ({ actions, graphql }) => {
             }
         }
     `)
-    data.allMdx.nodes
-        .filter(o => o.frontmatter.slug)
+    data!.allMdx.nodes
+        .filter(o => o.frontmatter?.slug)
         .forEach(o => {
             actions.createPage({
-                path: `/books/${o.frontmatter.slug}`,
-                component: require.resolve('./src/templates/book.tsx'),
+                path: `/books/${o.frontmatter!.slug}`,
+                component: path.resolve('./src/templates/book.tsx'),
                 context: {
                     id: o.id,
                 },
@@ -30,4 +33,4 @@ exports.createPages = async ({ actions, graphql }) => {
 }
 
 // for gql plugin
-const gql = s => s[0]
+const gql = (s: any) => s[0]
